@@ -1,0 +1,7 @@
+default:
+  slicer: slic3r
+  ini: default.ini
+  printer: 3d.ini
+  
+RPM_case.stl:
+  name: RPM_case.stl
