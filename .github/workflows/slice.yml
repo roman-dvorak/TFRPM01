@@ -2,9 +2,11 @@ name: Slicing
 
 on:
   push:
-    branches: [ TFRPM01B ]
-  pull_request:
-    branches: [ TFRPM01B ]
+    paths:
+    - '**.stl'
+    - '**.amf'
+    - '**.STL'
+    - '**.AMF'
 
   workflow_dispatch:
 
@@ -14,11 +16,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        
+        with:
+          fetch-depth: 5
       - name: Slicovani
         uses: roman-dvorak/Slice@master
         with:
           configuration: "/hw/CAD/stl/slicing.yml"
+          printer: "3d" 
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
