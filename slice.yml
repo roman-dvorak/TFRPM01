@@ -1,4 +1,4 @@
 default:
   printer: "3D"
   config: /hw/CAD/slicing/default.ini
-/hw/CAD/stl/RPM_case.stl:
+files:
