@@ -1,4 +1,4 @@
-solid OpenSCAD_Mot
+solid OpenSCAD_Mot 
   facet normal -0.263029 -0.478452 -0.837794
     outer loop
       vertex -0.872847 -1.85489 -3
