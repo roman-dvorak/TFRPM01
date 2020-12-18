@@ -2,5 +2,5 @@ default:
   printer: "3D"
   config: /hw/CAD/slicing/default.ini
 path:
--/hw/CAD/stl
-files:
+ - /hw/CAD/stl
+#files
