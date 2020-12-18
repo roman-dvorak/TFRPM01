@@ -30,9 +30,16 @@ jobs:
         uses: crykn/copy_folder_to_another_repo_action@v1.0.5
         continue-on-error: true
         with:
-          source_folder: 'out'
+          source_folder: '.'
           destination_repo: 'roman-dvorak/for_printing'
           destination_branch: 'master'
+      - name: Upload 2
+        uses: cpina/github-action-push-to-another-repository@v1.2
+        continue-on-error: true
+        with:
+          source-directory: '.'
+          destination-github-username: 'roman-dvorak'
+          destination-repository-name: 'for_printing'
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
         with:
