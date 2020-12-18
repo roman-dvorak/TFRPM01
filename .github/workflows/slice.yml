@@ -27,19 +27,12 @@ jobs:
         with:
           printer: "mlab"
       - name: Upload
-        uses: crykn/copy_folder_to_another_repo_action@v1.0.5
-        continue-on-error: true
-        with:
-          source_folder: '.'
-          destination_repo: 'roman-dvorak/for_printing'
-          destination_branch: 'master'
-      - name: Upload 2
         uses: cpina/github-action-push-to-another-repository@v1.2
         continue-on-error: true
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: '.'
+          source-directory: 'out'
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
       - name: Artifact
