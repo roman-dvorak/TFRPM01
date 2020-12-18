@@ -30,7 +30,7 @@ jobs:
         uses: crykn/copy_folder_to_another_repo_action@v1.0.5
         with:
           source_folder: 'out'
-          destination_repo: 'for_printing'
+          destination_repo: 'roman-dvorak/for_printing'
           destination_branch: 'master'
       
 #       uses: crykn/copy_folder_to_another_repo_action@v1.0.5
