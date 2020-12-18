@@ -26,3 +26,8 @@ jobs:
         uses: roman-dvorak/Slice@master
         with:
           printer: "mlab"
+      - name: Upload
+        uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+        with:
+          source-file: 'out'
+          destination-repo: 'for_printing'
