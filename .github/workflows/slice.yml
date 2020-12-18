@@ -39,6 +39,6 @@ jobs:
           # Artifact name
           name: "out"
           # Destination path
-          path: "oun"  
+          path: "out"  
       
 #       uses: crykn/copy_folder_to_another_repo_action@v1.0.5
