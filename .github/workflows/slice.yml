@@ -13,20 +13,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        printer: ['3d', 'mlab']
+    
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           fetch-depth: 2
-      - name: Slicovani 3D
+
+      - name: Checkout output
+        uses: actions/checkout@v2
+        with:
+          repository: roman-dvorak/for_printing
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          path: '/for_printing'
+
+      - name: Slicovani pro ${{ matrix.printer }}
         uses: roman-dvorak/Slice@master
         with:
-          printer: "3d" 
-      #- name: Slicovani mlab
-      #  uses: roman-dvorak/Slice@master
-      #  with:
-      #    printer: "mlab"
-      
+          printer: ${{ matrix.printer }}
+
       - name: Upload
         uses: cpina/github-action-push-to-another-repository@v1.2
         continue-on-error: true
@@ -36,6 +43,7 @@ jobs:
           source-directory: 'out'
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
+
       - name: Upload2
         uses: cpina/github-action-push-to-another-repository@v1.2
         continue-on-error: true
@@ -45,7 +53,26 @@ jobs:
           source-directory: 'out'
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
-          target-branch: '${GITHUB_REF##*/}' 
+          target-branch:  ${{ github.repository }}
+      - name: Push a folder to another repository
+        
+      - uses: crykn/copy_folder_to_another_repo_action@v1.0.5b
+        with:
+          # Source folder from the origin directory
+          source_folder: 'out'
+          # Destination repository
+          destination_repo: 'roman-dvorak/for_printing'
+          # Directory to push the folder contents to
+          #destination_folder: # optional
+          # Email for the git commit
+         # user_email: 
+          # GitHub username for the commit
+          #user_name: 
+          # branch to push folder to, defaults to master
+          destination_branch: ${{ github.head_ref }}
+          # The commit message
+      
+      
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
         with:
