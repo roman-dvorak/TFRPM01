@@ -35,17 +35,7 @@ jobs:
           printer: ${{ matrix.printer }}
 
       - name: Upload
-        uses: cpina/github-action-push-to-another-repository@v1.2
-        continue-on-error: true
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'out'
-          destination-github-username: 'roman-dvorak'
-          destination-repository-name: 'for_printing'
-
-      - name: Upload2
-        uses: cpina/github-action-push-to-another-repository@v1.2
+        uses: plocket/push-generated-file@master
         continue-on-error: true
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -54,16 +44,6 @@ jobs:
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
           target-branch:  ${{ github.repository }}
-        
-      - name: push3
-        uses: crykn/copy_folder_to_another_repo_action@v1.0.5b
-        continue-on-error: true
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source_folder: 'out'
-          destination_repo: 'roman-dvorak/for_printing'
-          destination_branch: ${{ github.head_ref }}      
       
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
