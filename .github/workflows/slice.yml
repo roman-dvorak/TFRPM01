@@ -45,7 +45,7 @@ jobs:
           source-directory: 'out'
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
-          target-branch: '/${GITHUB_REF##*/}/3d' 
+          target-branch: '${GITHUB_REF##*/}' 
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
         with:
