@@ -27,7 +27,7 @@ jobs:
         with:
           repository: roman-dvorak/for_printing
           token: ${{ secrets.API_TOKEN_GITHUB }}
-          path: '/for_printing'
+          path: 'for_printing'
 
       - name: Slicovani pro ${{ matrix.printer }}
         uses: roman-dvorak/Slice@master
