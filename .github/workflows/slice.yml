@@ -54,9 +54,9 @@ jobs:
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
           target-branch:  ${{ github.repository }}
-      - name: Push a folder to another repository
         
-      - uses: crykn/copy_folder_to_another_repo_action@v1.0.5b
+      - name: push3
+        uses: crykn/copy_folder_to_another_repo_action@v1.0.5b
         with:
           # Source folder from the origin directory
           source_folder: 'out'
