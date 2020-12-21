@@ -40,7 +40,7 @@ jobs:
         with:
           source_file_path: 'out'
           destination_repo: 'roman-dvorak/for_printing'
-          target_branch:  ${{ github.repository }}/${{ matrix.printer }}
+          target_branch:  ${${GITHUB_BRANCH##*/}##*/}/${{ matrix.printer }}
           token: ${{ secrets.API_TOKEN_GITHUB }}
       
       - name: Artifact
