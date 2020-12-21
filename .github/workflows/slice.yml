@@ -37,13 +37,11 @@ jobs:
       - name: Upload
         uses: plocket/push-generated-file@master
         continue-on-error: true
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'out'
-          destination-github-username: 'roman-dvorak'
-          destination-repository-name: 'for_printing'
-          target-branch:  ${{ github.repository }}
+          source_file_path: 'out'
+          destination_repo: 'roman-dvorak/for_printing'
+          target_branch:  ${{ github.repository }}/${{ matrix.printer }}
+          token: ${{ secrets.API_TOKEN_GITHUB }}
       
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
