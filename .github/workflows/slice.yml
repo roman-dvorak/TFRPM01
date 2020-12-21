@@ -22,10 +22,10 @@ jobs:
         uses: roman-dvorak/Slice@master
         with:
           printer: "3d" 
-      - name: Slicovani mlab
-        uses: roman-dvorak/Slice@master
-        with:
-          printer: "mlab"
+      #- name: Slicovani mlab
+      #  uses: roman-dvorak/Slice@master
+      #  with:
+      #    printer: "mlab"
       - name: Upload
         uses: cpina/github-action-push-to-another-repository@v1.2
         continue-on-error: true
@@ -35,6 +35,7 @@ jobs:
           source-directory: 'out'
           destination-github-username: 'roman-dvorak'
           destination-repository-name: 'for_printing'
+          target-branch: '/${BRANCH_NAME}/3d' 
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
         with:
