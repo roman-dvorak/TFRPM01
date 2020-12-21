@@ -57,21 +57,13 @@ jobs:
         
       - name: push3
         uses: crykn/copy_folder_to_another_repo_action@v1.0.5b
+        continue-on-error: true
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          # Source folder from the origin directory
           source_folder: 'out'
-          # Destination repository
           destination_repo: 'roman-dvorak/for_printing'
-          # Directory to push the folder contents to
-          #destination_folder: # optional
-          # Email for the git commit
-         # user_email: 
-          # GitHub username for the commit
-          #user_name: 
-          # branch to push folder to, defaults to master
-          destination_branch: ${{ github.head_ref }}
-          # The commit message
-      
+          destination_branch: ${{ github.head_ref }}      
       
       - name: Artifact
         uses: actions/upload-artifact@v2.2.1
